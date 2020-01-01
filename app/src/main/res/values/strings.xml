@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">打印神器</string>
+    <string name="action_settings">Settings</string>
+    <string name="user_group">用户</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="home">首页</string>
+    <string name="printer">打印机</string>
+    <string name="print">打印</string>
+    <string name="print_job_exists">打印任务已经存在</string>
+    <string name="width">宽度</string>
+    <string name="height">高度</string>
+    <string name="size_unit">单位：mm</string>
+
+    <string name="width_error">信封宽度不能为空</string>
+    <string name="height_error">信封高度不能为空</string>
+
+    <string name="system">系统</string>
+    <string name="custom">自定义</string>
+    <string name="size">尺寸</string>
+</resources>
