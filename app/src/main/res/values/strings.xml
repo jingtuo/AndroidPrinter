@@ -11,8 +11,8 @@
     <string name="height">高度</string>
     <string name="size_unit">单位：mm</string>
 
-    <string name="width_error">信封宽度不能为空</string>
-    <string name="height_error">信封高度不能为空</string>
+    <string name="width_error">宽度不能为空</string>
+    <string name="height_error">高度不能为空</string>
 
     <string name="system">系统</string>
     <string name="custom">自定义</string>
