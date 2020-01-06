@@ -19,28 +19,26 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.jingtuo.android.printer.R;
+import com.jingtuo.android.printer.base.fragment.BaseFragment;
 import com.jingtuo.android.printer.util.PrinterUtils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private HomeViewModel homeViewModel;
 
@@ -58,14 +56,13 @@ public class HomeFragment extends Fragment {
 
     private PrintAttributes.MediaSize mCurrentMediaSize;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_home;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void initView(View view) {
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         tvSize = view.findViewById(R.id.tv_size);
         etWidth = view.findViewById(R.id.et_width);
@@ -169,9 +166,12 @@ public class HomeFragment extends Fragment {
                 mSizeDropDownWindow.show();
             }
         });
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mSizeAdapter = new MediaSizeAdapter();
-
         homeViewModel.getSystemSizes().observe(this, new Observer<List<PrintAttributes.MediaSize>>() {
             @Override
             public void onChanged(List<PrintAttributes.MediaSize> mediaSizes) {

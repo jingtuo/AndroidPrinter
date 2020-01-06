@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/spinner_bg"
+        android:background="@drawable/edit_text_bg"
         android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
         android:gravity="start|center_vertical"
         android:text="@string/size"

@@ -17,4 +17,21 @@
     <string name="system">系统</string>
     <string name="custom">自定义</string>
     <string name="size">尺寸</string>
+
+    <string name="no_data">暂无数据</string>
+    <string name="add_user">添加用户</string>
+    <string name="full_name">姓名</string>
+    <string name="men">男</string>
+    <string name="women">女</string>
+    <string name="save">保存</string>
+    <string name="sex">性别</string>
+    <string name="mobile_no">手机号码</string>
+    <string name="address">地址</string>
+    <string name="postcode">邮编</string>
+    <string name="please_enter_full_name">请输入姓名</string>
+    <string name="please_enter_mobile_no">请输入手机号码</string>
+    <string name="please_enter_address">请输入地址</string>
+    <string name="please_enter_postcode">请输入邮编</string>
+    <string name="save_success">保存成功</string>
+    <string name="save_failure">保存失败</string>
 </resources>

@@ -27,6 +27,11 @@ public class PrinterUtils {
         return mill * 1000 / 25.4f;
     }
 
+    /**
+     * units are in points (1/72 of an inch)
+     * @param mill
+     * @return
+     */
     public static float convertToPosition(float mill) {
        return mill * 72 / 25.4f;
     }

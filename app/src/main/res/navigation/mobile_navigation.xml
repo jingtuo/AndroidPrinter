@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.jingtuo.android.printer.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_my_user"
+        android:name="com.jingtuo.android.printer.ui.my.user.MyUserFragment"
         android:label="@string/user_group"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_my_user" />
 
     <fragment
         android:id="@+id/navigation_notifications"
