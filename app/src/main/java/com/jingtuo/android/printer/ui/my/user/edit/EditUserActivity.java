@@ -1,18 +1,21 @@
-package com.jingtuo.android.printer.ui.my.user.add;
+package com.jingtuo.android.printer.ui.my.user.edit;
+
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.text.TextUtils;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.RadioGroup;
-
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jingtuo.android.printer.R;
 import com.jingtuo.android.printer.base.activity.BaseActivity;
+import com.jingtuo.android.printer.data.model.MyUserInfo;
 
 
 /**
@@ -20,7 +23,7 @@ import com.jingtuo.android.printer.base.activity.BaseActivity;
  *
  * @author JingTuo
  */
-public class AddUserActivity extends BaseActivity implements View.OnClickListener {
+public class EditUserActivity extends BaseActivity implements View.OnClickListener {
 
     TextInputEditText mEtFullName;
 
@@ -32,7 +35,7 @@ public class AddUserActivity extends BaseActivity implements View.OnClickListene
 
     TextInputEditText mEtPostcode;
 
-    AddUserViewModel mViewModel;
+    EditUserViewModel mViewModel;
 
     @Override
     protected int getLayoutId() {
@@ -49,7 +52,8 @@ public class AddUserActivity extends BaseActivity implements View.OnClickListene
         mEtPostcode = findViewById(R.id.et_postcode);
         findViewById(R.id.btn_save).setOnClickListener(this);
 
-        mViewModel = ViewModelProviders.of(this).get(AddUserViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(EditUserViewModel.class);
+
         mViewModel.saveResult().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -62,6 +66,37 @@ public class AddUserActivity extends BaseActivity implements View.OnClickListene
                 }
             }
         });
+
+        mViewModel.myUserInfo().observe(this, new Observer<MyUserInfo>() {
+            @Override
+            public void onChanged(MyUserInfo myUserInfo) {
+                mEtFullName.setText(myUserInfo.getFullName());
+                if ("1".equals(myUserInfo.getSex())) {
+                    mRgSex.check(R.id.rb_sex_men);
+                } else {
+                    mRgSex.check(R.id.rb_sex_women);
+                }
+                mEtMobileNo.setText(myUserInfo.getMobileNo());
+                mEtAddress.setText(myUserInfo.getAddress());
+                mEtPostcode.setText(myUserInfo.getPostcode());
+            }
+        });
+
+        mViewModel.deleteResult().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    //删除成功
+                    Snackbar.make(mEtFullName, R.string.delete_success, Snackbar.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Snackbar.make(mEtFullName, R.string.delete_failure, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+        Intent intent = getIntent();
+        long id = intent.getLongExtra("id", -1);
+        mViewModel.loadMyUserInfo(id);
     }
 
     @Override
@@ -90,5 +125,20 @@ public class AddUserActivity extends BaseActivity implements View.OnClickListene
                     mEtAddress.getText().toString().trim(),
                     mEtPostcode.getText().toString().trim());
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_user, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.delete_user) {
+            mViewModel.deleteUser();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

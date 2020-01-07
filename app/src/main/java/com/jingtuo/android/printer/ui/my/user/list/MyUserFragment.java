@@ -1,7 +1,9 @@
-package com.jingtuo.android.printer.ui.my.user;
+package com.jingtuo.android.printer.ui.my.user.list;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -13,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.jingtuo.android.printer.R;
 import com.jingtuo.android.printer.base.fragment.BaseFragment;
 import com.jingtuo.android.printer.data.model.MyUserInfo;
+import com.jingtuo.android.printer.ui.my.user.edit.EditUserActivity;
 
 import java.util.List;
 
@@ -32,6 +35,16 @@ public class MyUserFragment extends BaseFragment {
         listView = view.findViewById(R.id.list_view);
         ConstraintLayout clNoData = view.findViewById(R.id.cl_no_data);
         listView.setEmptyView(clNoData);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MyUserAdapter adapter = (MyUserAdapter) parent.getAdapter();
+                MyUserInfo myUserInfo = adapter.getItem(position);
+                Intent intent = new Intent(parent.getContext(), EditUserActivity.class);
+                intent.putExtra("id", myUserInfo.getId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jingtuo.android.printer.ui.my.user;
+package com.jingtuo.android.printer.ui.my.user.list;
 
 
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.jingtuo.android.printer.ui.my.user;
+package com.jingtuo.android.printer.ui.my.user.list;
 
 import android.app.Application;
 import android.util.Log;

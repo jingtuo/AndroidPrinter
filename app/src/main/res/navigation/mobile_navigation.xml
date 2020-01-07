@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_my_user"
-        android:name="com.jingtuo.android.printer.ui.my.user.MyUserFragment"
+        android:name="com.jingtuo.android.printer.ui.my.user.list.MyUserFragment"
         android:label="@string/user_group"
         tools:layout="@layout/fragment_my_user" />
 
