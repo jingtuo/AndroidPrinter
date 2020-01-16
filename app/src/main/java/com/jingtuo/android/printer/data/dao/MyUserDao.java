@@ -61,4 +61,13 @@ public interface MyUserDao {
      */
     @Delete
     Completable delete(MyUserInfo myUserInfo);
+
+
+    /**
+     * 查询我的用户
+     *
+     * @return
+     */
+    @Query("SELECT * FROM MyUserInfo WHERE fullName LIKE '%'||:text||'%' OR address LIKE '%'||:text||'%'")
+    Single<List<MyUserInfo>> queryMyUser(String text);
 }

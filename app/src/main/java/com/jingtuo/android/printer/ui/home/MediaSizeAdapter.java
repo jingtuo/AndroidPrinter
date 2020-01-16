@@ -75,11 +75,10 @@ public class MediaSizeAdapter extends BaseAdapter {
         }
 
         public void setView(PrintAttributes.MediaSize item) {
-            PrintAttributes.MediaSize mediaSize = item;
             tvName.setText(item.getLabel(tvName.getContext().getPackageManager()));
-            tvSize.setText(String.format("%s(mm) x %s(mm)",
-                    PrinterUtils.formatNumber(PrinterUtils.convertToMill(item.getWidthMils())),
-                    PrinterUtils.formatNumber(PrinterUtils.convertToMill(item.getHeightMils()))));
+            tvSize.setText(String.format("%s厘米 x %s厘米",
+                    PrinterUtils.formatNumber(PrinterUtils.convertToCm(item.getWidthMils())),
+                    PrinterUtils.formatNumber(PrinterUtils.convertToCm(item.getHeightMils()))));
         }
 
     }

@@ -21,44 +21,44 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_width"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+    <RadioGroup
+        android:id="@+id/rg_lp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="@string/width"
-        app:helperText="@string/size_unit"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_size">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_width"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_landscape"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_weight="1"
+            android:text="@string/landscape" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_height"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_portrait"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/portrait" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_remark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="@string/height"
-        app:helperText="@string/size_unit"
+        android:text="@string/media_size_remark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_width">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/rg_lp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_print"
@@ -71,5 +71,5 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_height" />
+        app:layout_constraintTop_toBottomOf="@id/tv_remark" />
 </androidx.constraintlayout.widget.ConstraintLayout>

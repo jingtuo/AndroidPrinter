@@ -1,6 +1,7 @@
 package com.jingtuo.android.printer.ui.my.user.edit;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -129,13 +132,16 @@ public class EditUserActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.edit_user, menu);
+        MenuItem addUserItem = menu.add(0, 0, Menu.NONE, R.string.delete_user);
+        addUserItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        MenuItemCompat.setIconTintList(addUserItem, ColorStateList.valueOf(ContextCompat.getColor(this, R.color.tool_bar_icon_tint_color)));
+        addUserItem.setIcon(R.drawable.ic_delete_forever_black_24dp);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.delete_user) {
+        if (item.getItemId() == 0) {
             mViewModel.deleteUser();
             return true;
         }

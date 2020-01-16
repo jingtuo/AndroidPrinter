@@ -11,14 +11,12 @@
     <string name="height">高度</string>
     <string name="size_unit">单位：mm</string>
 
-    <string name="width_error">宽度不能为空</string>
-    <string name="height_error">高度不能为空</string>
-
     <string name="system">系统</string>
     <string name="custom">自定义</string>
     <string name="size">尺寸</string>
 
     <string name="no_data">暂无数据</string>
+    <string name="search_user">搜索用户</string>
     <string name="add_user">添加用户</string>
     <string name="full_name">姓名</string>
     <string name="men">男</string>
@@ -37,4 +35,9 @@
     <string name="delete_user">删除用户</string>
     <string name="delete_success">删除成功</string>
     <string name="delete_failure">删除失败</string>
+    <string name="landscape">横向</string>
+    <string name="portrait">纵向</string>
+    <string name="media_size_remark">1英寸(in)= 2.54厘米(cm)</string>
+    <string name="please_select_print_size">请选择打印尺寸</string>
+
 </resources>

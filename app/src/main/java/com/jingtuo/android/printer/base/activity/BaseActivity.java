@@ -38,11 +38,26 @@ public abstract class BaseActivity extends AppCompatActivity {
             setSupportActionBar(mToolbar);
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
-                actionBar.setTitle("");
-                actionBar.setDisplayHomeAsUpEnabled(true);
-                actionBar.setDisplayShowHomeEnabled(true);
+                if (isTitleCentered()) {
+                    //移除ToolBar中自带的标题
+                    actionBar.setTitle("");
+                }
+                actionBar.setDisplayHomeAsUpEnabled(isSecondaryPage());
+                actionBar.setDisplayShowHomeEnabled(isSecondaryPage());
             }
         }
+    }
+
+    /**
+     * 标题是否居中
+     * @return
+     */
+    protected boolean isTitleCentered() {
+        return true;
+    }
+
+    protected boolean isSecondaryPage() {
+        return true;
     }
 
     protected void initView() {
@@ -51,10 +66,14 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onTitleChanged(CharSequence title, int color) {
-//        super.onTitleChanged(title, color);
-        if (mTvTitle != null) {
-            mTvTitle.setText(title);
+        if (isTitleCentered()) {
+            //标题居中，使用自定义标题代替
+            if (mTvTitle != null) {
+                mTvTitle.setText(title);
+            }
+            return;
         }
+        super.onTitleChanged(title, color);
     }
 
     @Override

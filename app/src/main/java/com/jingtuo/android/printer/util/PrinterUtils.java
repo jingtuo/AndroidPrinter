@@ -19,6 +19,25 @@ public class PrinterUtils {
     }
 
     /**
+     * 转换成英寸
+     * @param mils (thousandths of an inch).
+     * @return
+     */
+    public static float convertToInch(int mils) {
+        return mils / 1000f;
+    }
+
+    /**
+     * 转换成厘米
+     * @param mils (thousandths of an inch).
+     * @return
+     */
+    public static float convertToCm(int mils) {
+        return 2.54f * mils / 1000f;
+    }
+
+
+    /**
      * 转换成英寸的千分之一
      * @param mill 毫米
      * @return
@@ -29,7 +48,7 @@ public class PrinterUtils {
 
     /**
      * units are in points (1/72 of an inch)
-     * @param mill
+     * @param mill 毫米
      * @return
      */
     public static float convertToPosition(float mill) {

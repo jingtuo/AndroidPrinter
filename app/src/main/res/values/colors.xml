@@ -6,4 +6,6 @@
 
     <color name="spinner_stroke_color">#EEEEEE</color>
     <color name="drop_down_list_view_divider_color">#EEEEEE</color>
+    <!-- 尚未研究出使用主题中的那个颜色控制菜单的图标颜色，摘录至此 -->
+    <color name="tool_bar_icon_tint_color">#FFFFFF</color>
 </resources>

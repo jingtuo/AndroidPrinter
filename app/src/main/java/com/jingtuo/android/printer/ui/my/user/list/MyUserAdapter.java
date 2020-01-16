@@ -19,6 +19,9 @@ import java.util.List;
  */
 public class MyUserAdapter extends SimpleAdapter<MyUserInfo> {
 
+    public MyUserAdapter() {
+    }
+
     public MyUserAdapter(List<MyUserInfo> data) {
         super(data);
     }

@@ -62,6 +62,5 @@ public class MyUserViewModel extends AndroidViewModel {
                         Log.e(TAG, e.getMessage(), e);
                     }
                 });
-
     }
 }
